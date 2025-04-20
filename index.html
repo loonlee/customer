@@ -39,30 +39,28 @@
           訂閱我們
         </span>
 
-        <label class="label-input100" for="first-name">姓名</label>
+        <label class="label-input100" for="first-name">姓名 *</label>
         <div class="wrap-input100 validate-input" data-validate="姓名為必填">
-          <input id="name" class="input100" type="text" placeholder="">
+          <input id="name" class="input100" type="text" placeholder="王大明">
           <span class="focus-input100"></span>
         </div>
 
-        <label class="label-input100" for="email">電郵</label>
-        <div class="wrap-input100 validate-input" data-validate="電郵為必填">
-          <input id="email" class="input100" type="text" placeholder="">
+        <label class="label-input100" for="email">email</label>
+        <div class="wrap-input100">
+          <input id="email" class="input100" type="text" placeholder="Eg. example@email.com">
           <span class="focus-input100"></span>
         </div>
 
-        <label class="label-input100" for="phone">電話</label>
-        <div class="wrap-input100 validate-input" data-validate="電話為必填">
-          <input id="phone" class="input100" type="text" placeholder="">
+        <label class="label-input100" for="score">email</label>
+        <div class="wrap-input100">
+          <input id="score" class="input100" type="text" placeholder="Eg. example@email.com">
           <span class="focus-input100"></span>
         </div>
 
-        <label class="label-input100" for="other">訂閱通知方式</label>
-        <div class="wrap-input100 validate-input" data-validate="請選擇">
-          <select class="form-control" id="score" style="border: 0px;">
-            <option>電郵</option>
-            <option>電話</option>
-          </select>
+        <label class="label-input100" for="message">您的建議</label>
+        <div class="wrap-input100" data-validate="Message is required">
+          <textarea id="message" class="input100" placeholder="Write us a message"></textarea>
+          <span class="focus-input100"></span>
         </div>
 
         <div class="container-contact100-form-btn">
@@ -155,7 +153,7 @@
       //在這裡我們要先擋掉form默認事件
       e.preventDefault();
 
-      if ($('#name').val() && $('#email').val()) {//需要先確認必填欄位是否填寫
+      if ($('#name').val() && $('#score').val()) {//需要先確認必填欄位是否填寫
         $.ajax({
           // url為Google Form按下submit的aciotn
           url: "https://docs.google.com/forms/u/0/d/e/1FAIpQLSeAUy4CRTO1odFRmOWMzIZEE7Ux5gttbXyuMDIEOjWlpOK1KQ/formResponse",
@@ -163,8 +161,8 @@
           data: {// entry.xxxxx 這些需要填寫您表單裡面的值，與其相互對應
             "entry.96131283": $('#name').val(),
             "entry.138009696": $('#email').val(),
-            "entry.258251249": $('#phone').val(),
-            "entry.1025376592_sentinel": $('#score').val()
+            "entry.258251249": $('#score').val(),
+            "entry.1310220291": $('#message').val()
           },
           type: "POST", //因為是要進行insert的動作，故事用POST
           dataType: "JSONP",
